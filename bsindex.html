@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Background Sync</title>
+    <script src= "sw.js"></script>
+</head>
+<body>
+    background sync
+    <button onclick='sayHi("Dash")'>HI</button>
+    <script>
+    // function sayHi(name){
+    //     fetch(`/hi/${name}`)
+    //         .then(r => r.text())
+    //         .then(r=>(console.log(r)))
+    // }
+
+
+    function sayHi(name) {
+        if ('SyncManager' in window) {
+            // We will use Background Sync
+            navigator.serviceWorker.getRegistration()
+                .then(registration => {
+                    registration.sync.register(`hi-${name}`);
+                }); 
+        } else {
+            fetch(`/hi/${tourId}`)
+                .then(r => r.text())
+                .then(hi => {
+                    console.log(hi)
+                });
+        }
+    }
+    </script>
+</body>
+</html>
