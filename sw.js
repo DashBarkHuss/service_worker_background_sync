@@ -19,12 +19,20 @@ if('serviceWorker' in navigator) {
  self.addEventListener("sync", event => {
   if (event.tag.substring(0, 2)=="hi") {
       const name = event.tag.substring(3);
+      
       event.waitUntil(
-          fetch(`/hi/${name}`)
-              .then(r => r.text())
-              .then(hi => {
-                  console.log(hi, 26)
-              })
+          fetch(`/hi`, {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            headers: {
+                'Content-Type': 'application/json',
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: JSON.stringify({test:90}), // body data type must match "Content-Type" header
+        })
+              .then(r => console.log("prom", r.text()))
+              // .then(hi => {
+              //     console.log(hi, 26)
+              // })
           )
   }
 })

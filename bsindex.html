@@ -25,12 +25,6 @@
                 .then(registration => {
                     registration.sync.register(`hi-${name}`);
                 }); 
-        } else {
-            fetch(`/hi/${tourId}`)
-                .then(r => r.text())
-                .then(hi => {
-                    console.log(hi)
-                });
         }
     }
     </script>
