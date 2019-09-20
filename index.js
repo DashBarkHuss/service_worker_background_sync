@@ -1,9 +1,9 @@
 const express = require('express');
-// const database = require('./database');
+const database = require('./database');
 const app = express();``
 
 
-// database.create();
+database.create();
 app.use(express.json());
 
 
@@ -20,8 +20,10 @@ app.use(express.static("./"))
 // });
 
 app.post('/hi', (req,res)=>{
-    console.log(23)
-    res.send("stuff to send")
+    database.connection.query(`insert into testtable (name) values('${req.body.name}')`, (err, results)=>{
+        console.log(err, results);
+        res.send(results)
+    })
 })
 
 app.listen(3306, ()=>{console.log("listening")})

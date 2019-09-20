@@ -27,7 +27,7 @@ if('serviceWorker' in navigator) {
                 'Content-Type': 'application/json',
  
             },
-            body: JSON.stringify({test:90}), 
+            body: JSON.stringify({name}), 
         })
               .then(r => console.log("prom", r.text()))
 
