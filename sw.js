@@ -22,17 +22,15 @@ if('serviceWorker' in navigator) {
       
       event.waitUntil(
           fetch(`/hi`, {
-            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            method: 'POST', 
             headers: {
                 'Content-Type': 'application/json',
-                // 'Content-Type': 'application/x-www-form-urlencoded',
+ 
             },
-            body: JSON.stringify({test:90}), // body data type must match "Content-Type" header
+            body: JSON.stringify({test:90}), 
         })
               .then(r => console.log("prom", r.text()))
-              // .then(hi => {
-              //     console.log(hi, 26)
-              // })
+
           )
   }
 })
