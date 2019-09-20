@@ -9,21 +9,16 @@
 </head>
 <body>
     background sync
-    <button onclick='sayHi("Dash")'>HI</button>
+    <input id="post">
+    <button onclick='post(document.getElementById("post").value)'>Post</button>
     <script>
-    // function sayHi(name){
-    //     fetch(`/hi/${name}`)
-    //         .then(r => r.text())
-    //         .then(r=>(console.log(r)))
-    // }
 
-
-    function sayHi(name) {
+    function post(name) {
         if ('SyncManager' in window) {
             // We will use Background Sync
             navigator.serviceWorker.getRegistration()
                 .then(registration => {
-                    registration.sync.register(`hi-${name}`);
+                    registration.sync.register(`post-${name}`);
                 }); 
         }
     }

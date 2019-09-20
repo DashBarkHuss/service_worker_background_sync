@@ -19,18 +19,15 @@ if('serviceWorker' in navigator) {
  self.addEventListener("sync", event => {
   if (event.tag.substring(0, 2)=="hi") {
       const name = event.tag.substring(3);
-      
       event.waitUntil(
           fetch(`/hi`, {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json',
- 
             },
             body: JSON.stringify({name}), 
         })
               .then(r => console.log("prom", r.text()))
-
           )
   }
 })
